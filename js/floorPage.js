@@ -6,7 +6,7 @@ $(document).ready(function(){
 		return ruler[0].offsetWidth; 
 	} 
 	
-	function shrink(index, subH, subW, theValue){
+	function shrink(index, subH, subW, theValue, fn){
 		var sub = ".subject[data-index="+index+"]";
 		var text = $(sub + " .res .active").text();
 		if($(sub).attr('tag')=='more'){
@@ -37,7 +37,7 @@ $(document).ready(function(){
 					$(sub + " .myanswer-wrap").text(floorPage.config.check.toString());
 					$(sub + " .subject-title").hide();
 				}
-				
+				fn();
 			});
 			$(sub + " .res").animate({
 				opacity: 0
@@ -119,44 +119,52 @@ $(document).ready(function(){
 				
 				floorPage.config.value1=$(this).text()   //选择
 				$(this).addClass("active").siblings().removeClass("active");	
-		   		$('.qqq2').css('display','block')
-		   		
-		   		if($('.qqq1 .subject').attr('onechance') == "true"){
-		   			$('.qqq1 .subject').attr('onechance', false);
-		   			$('.qqq1 .subject').attr('data-height', $('.qqq1 .subject').innerHeight());
-		   		}
-		   		
-				getHeight('.qqq2');
+				if($('.qqq1 .subject').attr('onechance') == "true") {
+					$('.qqq1 .subject').attr('onechance', false);
+					$('.qqq1 .subject').attr('data-height', $('.qqq1 .subject').innerHeight());
+				}
 	//	   		$('html,body').animate({scrollTop:$('.a').offset().top}, 'slow');
 				$('.qqq1 .myanswer-wrap').removeClass('active');
 				initData(1);
-				shrink($(e.target).parents('.subject').data('index'), $(e.target).parents('.subject').data('height'), $.fn.obj.subW, $.fn.obj.theValue);
+				shrink($(e.target).parents('.subject').data('index'), $(e.target).parents('.subject').data('height'), $.fn.obj.subW, $.fn.obj.theValue, function(){
+					setTimeout(function(){
+						$('.qqq2').css('display', 'block');
+						getHeight('.qqq2');
+					},700);
+				});
 			})
 			$(document).on('click','.qqq2 .res label, .qqq2 .myanswer-wrap',function(e){
 				
 				floorPage.config.value2=$(this).text() 
 				$(this).addClass("active").siblings().removeClass("active");
-		   		$('.qqq3').css('display','block')
-		   		getHeight('.qqq3');
+		   		
 	//	   		$('html,body').animate({scrollTop:$('.a').offset().top}, 'slow');
 				$('.qqq2 .myanswer-wrap').removeClass('active');
 				initData(2);
-				shrink($(e.target).parents('.subject').data('index'), $(e.target).parents('.subject').data('height'), $.fn.obj.subW, $.fn.obj.theValue);
+				shrink($(e.target).parents('.subject').data('index'), $(e.target).parents('.subject').data('height'), $.fn.obj.subW, $.fn.obj.theValue, function(){
+					setTimeout(function() {
+						$('.qqq3').css('display','block')
+			   			getHeight('.qqq3');
+					}, 700);
+				});
 			})
 			$(document).on('click','.qqq3 .res label, .qqq3 .myanswer-wrap',function(e){
 				floorPage.config.value3=$(this).text() 
 				$(this).addClass("active").siblings().removeClass("active");
-		   		$('.qqq4').css('display','block')
-		   		getHeight('.qqq4');
 	//	   		$('html,body').animate({scrollTop:$('.a').offset().top}, 'slow');
 				$('.qqq3 .myanswer-wrap').removeClass('active');
 				initData(3);
-				shrink($(e.target).parents('.subject').data('index'), $(e.target).parents('.subject').data('height'), $.fn.obj.subW, $.fn.obj.theValue);
+				shrink($(e.target).parents('.subject').data('index'), $(e.target).parents('.subject').data('height'), $.fn.obj.subW, $.fn.obj.theValue, function(){
+					setTimeout(function() {
+						$('.qqq4').css('display','block')
+			   			getHeight('.qqq4');
+		   			}, 700);
+				});
 			})
 			$(document).on('click','.check-btn, .qqq4 .myanswer-wrap',function(e){
 		   		$('.finish').css('display','flex')
 		   		initData(4);
-		   		shrink($(e.target).parents('.subject').data('index'), $(e.target).parents('.subject').data('height'), $.fn.obj.subW, $.fn.obj.theValue);
+		   		shrink($(e.target).parents('.subject').data('index'), $(e.target).parents('.subject').data('height'), $.fn.obj.subW, $.fn.obj.theValue, function(){});
 	//	   		$('html,body').animate({scrollTop:$('.a').offset().top}, 'slow');
 //				console.log(floorPage.config.check.toString()+'1123123123')
 //				$(".qqq4 .myanswer-wrap").text(floorPage.config.check.toString());
