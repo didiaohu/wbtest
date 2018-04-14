@@ -5,7 +5,9 @@ $(document).ready(function(){
 		ruler.text(this); 
 		return ruler[0].offsetWidth; 
 	} 
-	
+	function scrollToEnd(){//滚动到底部
+        $('html, body').animate({scrollTop: $(document).height()}, 300); 
+	}
 	function shrink(index, subH, subW, theValue, fn){
 		var sub = ".subject[data-index="+index+"]";
 		var text = $(sub + " .res .active").text();
@@ -38,12 +40,13 @@ $(document).ready(function(){
 					$(sub + " .subject-title").hide();
 				}
 				fn();
+//				alert($('.a').offset().top)
 			});
 			$(sub + " .res").animate({
 				opacity: 0
 			})
 			$(sub).data('state', false);
-			$('html,body').animate({scrollTop:$('.a').offset().top}, 'slow'); //向上移动
+			
 		}else{
 			$(sub).animate({
 				'height': subH + 'px',
@@ -123,13 +126,14 @@ $(document).ready(function(){
 					$('.qqq1 .subject').attr('onechance', false);
 					$('.qqq1 .subject').attr('data-height', $('.qqq1 .subject').innerHeight());
 				}
-	//	   		$('html,body').animate({scrollTop:$('.a').offset().top}, 'slow');
+	//	   		
 				$('.qqq1 .myanswer-wrap').removeClass('active');
 				initData(1);
 				shrink($(e.target).parents('.subject').data('index'), $(e.target).parents('.subject').data('height'), $.fn.obj.subW, $.fn.obj.theValue, function(){
 					setTimeout(function(){
 						$('.qqq2').css('display', 'block');
 						getHeight('.qqq2');
+						scrollToEnd();
 					},700);
 				});
 			})
@@ -145,6 +149,7 @@ $(document).ready(function(){
 					setTimeout(function() {
 						$('.qqq3').css('display','block')
 			   			getHeight('.qqq3');
+			   			scrollToEnd();
 					}, 700);
 				});
 			})
@@ -158,6 +163,7 @@ $(document).ready(function(){
 					setTimeout(function() {
 						$('.qqq4').css('display','block')
 			   			getHeight('.qqq4');
+			   			scrollToEnd();
 		   			}, 700);
 				});
 			})
