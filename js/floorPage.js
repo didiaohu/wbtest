@@ -132,7 +132,10 @@ $(document).ready(function(){
 				$('.qqq1 .myanswer-wrap').removeClass('active');
 				initData(1);
 				$('.qqq2').css('display', 'block');
-				$('.qqq2').css('visibility','hidden');
+				if($('.qqq2').attr('onechance') == 'true') {
+					$('.qqq2').css('visibility','hidden');
+				}
+				
 				shrink($(e.target).parents('.subject').data('index'), $(e.target).parents('.subject').data('height'), $.fn.obj.subW, $.fn.obj.theValue, function(){
 					setTimeout(function(){
 						$('.qqq2').css('visibility','visible');
@@ -150,7 +153,9 @@ $(document).ready(function(){
 				$('.qqq2 .myanswer-wrap').removeClass('active');
 				initData(2);
 				$('.qqq3').css('display','block')
-				$('.qqq3').css('visibility','hidden');
+				if($('.qqq3').attr('onechance') == 'true'){
+					$('.qqq3').css('visibility','hidden');
+				}
 				shrink($(e.target).parents('.subject').data('index'), $(e.target).parents('.subject').data('height'), $.fn.obj.subW, $.fn.obj.theValue, function(){
 					setTimeout(function() {
 						$('.qqq3').css('visibility','visible');
@@ -166,7 +171,9 @@ $(document).ready(function(){
 				$('.qqq3 .myanswer-wrap').removeClass('active');
 				initData(3);
 				$('.qqq4').css('display','block')
-				$('.qqq4').css('visibility','hidden');
+				if($('.qqq4').attr('onechance') == 'true'){
+					$('.qqq4').css('visibility','hidden');
+				}
 				shrink($(e.target).parents('.subject').data('index'), $(e.target).parents('.subject').data('height'), $.fn.obj.subW, $.fn.obj.theValue, function(){
 					setTimeout(function() {
 						$('.qqq4').css('visibility','visible');
