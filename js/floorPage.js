@@ -176,9 +176,14 @@ $(document).ready(function(){
 				});
 			})
 			$(document).on('click','.check-btn, .qqq4 .myanswer-wrap',function(e){
-		   		$('.finish').css('display','flex')
 		   		initData(4);
-		   		shrink($(e.target).parents('.subject').data('index'), $(e.target).parents('.subject').data('height'), $.fn.obj.subW, $.fn.obj.theValue, function(){});
+		   		$('#addHeight').height($('.qqq4 .subject').data('height'));
+		   		shrink($(e.target).parents('.subject').data('index'), $(e.target).parents('.subject').data('height'), $.fn.obj.subW, $.fn.obj.theValue, function(){
+		   			setTimeout(function() {
+//		   				$('#addHeight').hide();
+		   				$('.finish').css('display','flex')
+		   			}, 700);
+		   		});
 	//	   		$('html,body').animate({scrollTop:$('.a').offset().top}, 'slow');
 //				console.log(floorPage.config.check.toString()+'1123123123')
 //				$(".qqq4 .myanswer-wrap").text(floorPage.config.check.toString());
