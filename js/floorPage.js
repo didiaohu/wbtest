@@ -181,7 +181,8 @@ $(document).ready(function(){
 		   		shrink($(e.target).parents('.subject').data('index'), $(e.target).parents('.subject').data('height'), $.fn.obj.subW, $.fn.obj.theValue, function(){
 		   			setTimeout(function() {
 //		   				$('#addHeight').hide();
-		   				$('.finish').css('display','flex')
+						$('#addHeight').animate({'height':0});
+		   				$('.finish').css('display','flex');
 		   			}, 700);
 		   		});
 	//	   		$('html,body').animate({scrollTop:$('.a').offset().top}, 'slow');
