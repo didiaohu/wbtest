@@ -6,7 +6,7 @@ $(document).ready(function(){
 		return ruler[0].offsetWidth; 
 	} 
 	function scrollToEnd(){//滚动到底部
-        $('html, body').animate({scrollTop: $(document).height()}, 300); 
+        $('html, body').animate({scrollTop: $(document).height() - $(window).height() - 20}, 300); 
 	}
 	function shrink(index, subH, subW, theValue, fn){
 		var sub = ".subject[data-index="+index+"]";
@@ -26,9 +26,10 @@ $(document).ready(function(){
 
 		if(isclose){
 			$(sub).animate({
-				'height': '2em',
+				
 			    'margin-left': subW + 'px',
-			    'margin-right': mgr + 'em'
+			    'margin-right': mgr + 'em',
+			    'height': '2em'
 			}, "slow", function(){
 				$(sub).height("auto");
 				$(sub).addClass("answer-complete-wrap");
@@ -49,9 +50,10 @@ $(document).ready(function(){
 			
 		}else{
 			$(sub).animate({
-				'height': subH + 'px',
+				
 			    'margin-left':'0',
-			    'margin-right':'0'
+			    'margin-right':'0',
+			    'height': subH + 'px'
 			}, "slow", function(){
 				$(sub).height("auto");
 				$(sub).removeClass("answer-complete-wrap");
