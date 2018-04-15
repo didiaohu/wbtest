@@ -6,7 +6,7 @@ $(document).ready(function(){
 		return ruler[0].offsetWidth; 
 	} 
 	function scrollToEnd(){//滚动到底部
-        $('html, body').animate({scrollTop: $(document).height() - $(window).height() - 120}, 300); 
+        $('html, body').animate({scrollTop: $(document).height() - $(window).height()}, 300); 
 	}
 	function shrink(index, subH, subW, theValue, fn){
 		var sub = ".subject[data-index="+index+"]";
@@ -131,9 +131,11 @@ $(document).ready(function(){
 	//	   		
 				$('.qqq1 .myanswer-wrap').removeClass('active');
 				initData(1);
+				$('.qqq2').css('display', 'block');
+				$('.qqq2').css('visibility','hidden');
 				shrink($(e.target).parents('.subject').data('index'), $(e.target).parents('.subject').data('height'), $.fn.obj.subW, $.fn.obj.theValue, function(){
 					setTimeout(function(){
-						$('.qqq2').css('display', 'block');
+						$('.qqq2').css('visibility','visible');
 						getHeight('.qqq2');
 						scrollToEnd();
 					},700);
@@ -147,9 +149,11 @@ $(document).ready(function(){
 	//	   		$('html,body').animate({scrollTop:$('.a').offset().top}, 'slow');
 				$('.qqq2 .myanswer-wrap').removeClass('active');
 				initData(2);
+				$('.qqq3').css('display','block')
+				$('.qqq3').css('visibility','hidden');
 				shrink($(e.target).parents('.subject').data('index'), $(e.target).parents('.subject').data('height'), $.fn.obj.subW, $.fn.obj.theValue, function(){
 					setTimeout(function() {
-						$('.qqq3').css('display','block')
+						$('.qqq3').css('visibility','visible');
 			   			getHeight('.qqq3');
 			   			scrollToEnd();
 					}, 700);
@@ -161,9 +165,11 @@ $(document).ready(function(){
 	//	   		$('html,body').animate({scrollTop:$('.a').offset().top}, 'slow');
 				$('.qqq3 .myanswer-wrap').removeClass('active');
 				initData(3);
+				$('.qqq4').css('display','block')
+				$('.qqq4').css('visibility','hidden');
 				shrink($(e.target).parents('.subject').data('index'), $(e.target).parents('.subject').data('height'), $.fn.obj.subW, $.fn.obj.theValue, function(){
 					setTimeout(function() {
-						$('.qqq4').css('display','block')
+						$('.qqq4').css('visibility','visible');
 			   			getHeight('.qqq4');
 			   			scrollToEnd();
 		   			}, 700);
