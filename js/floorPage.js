@@ -13,6 +13,9 @@ $(document).ready(function(){
 		var text = $(sub + " .res .active").text();
 		if($(sub).attr('tag')=='more'){
 			text = floorPage.config.check.toString();
+			if(floorPage.config.check.toString() == ""){
+				text = "不知道";
+			}
 		}
 		var len = text.visualLength();
 		subW = subW - len - theValue * 2;
@@ -39,6 +42,9 @@ $(document).ready(function(){
 				if($(sub).attr('tag')=='more'){
 					$(sub + " .myanswer-wrap").text(floorPage.config.check.toString());
 					$(sub + " .subject-title").hide();
+					if(floorPage.config.check.toString() == ""){
+						$(sub + " .myanswer-wrap").text("不知道");
+					}
 				}
 				fn();
 //				alert($('.a').offset().top)
@@ -185,6 +191,7 @@ $(document).ready(function(){
 			$(document).on('click','.check-btn, .qqq4 .myanswer-wrap',function(e){
 		   		initData(4);
 		   		$('#addHeight').height($('.qqq4 .subject').data('height'));
+		   		
 		   		shrink($(e.target).parents('.subject').data('index'), $(e.target).parents('.subject').data('height'), $.fn.obj.subW, $.fn.obj.theValue, function(){
 		   			setTimeout(function() {
 //		   				$('#addHeight').hide();
