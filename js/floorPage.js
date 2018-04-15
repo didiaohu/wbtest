@@ -6,7 +6,7 @@ $(document).ready(function(){
 		return ruler[0].offsetWidth; 
 	} 
 	function scrollToEnd(){//滚动到底部
-        $('html, body').animate({scrollTop: $(document).height() - $(window).height() - 80}, 300); 
+        $('html, body').animate({scrollTop: $(document).height() - $(window).height() - 120}, 300); 
 	}
 	function shrink(index, subH, subW, theValue, fn){
 		var sub = ".subject[data-index="+index+"]";
